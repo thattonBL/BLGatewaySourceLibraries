@@ -1,0 +1,11 @@
+﻿.vs
+src/BuildingBlocks/EventBus/bin
+src/BuildingBlocks/EventBus/obj
+src/BuildingBlocks/EventBusRabbitMQ/bin
+src/BuildingBlocks/EventBusRabbitMQ/obj
+src/BuildingBlocks/IntegrationEventLogEF/bin
+src/BuildingBlocks/IntegrationEventLogEF/obj
+src/Common/Events.Common/bin
+src/Common/Services.Common/bin
+src/Common/Services.Common/obj
+src/Common/Events.Common/obj
