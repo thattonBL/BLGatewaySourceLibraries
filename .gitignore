@@ -9,3 +9,7 @@ src/Common/Events.Common/bin
 src/Common/Services.Common/bin
 src/Common/Services.Common/obj
 src/Common/Events.Common/obj
+bin
+elasticsrchdata01
+obj
+src/Microservices
