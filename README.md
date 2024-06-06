@@ -1,5 +1,5 @@
 This is the dev project that contains the parent solution for running BLGateway Microservices in Docker.
-Once checked out you can add the Microservices you want to work on by simply checking them out to the src -> Mcroservices directory found within this solution.
+Once checked out you can add the Microservices you want to work on by simply checking them out to the src -> Microservices directory found within this solution.
 This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out to the src -> Microservices directory then the whole system should work out of the box.
 A complete solution (as it stand now 6/6/24) currently looks like:
 
