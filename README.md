@@ -1,4 +1,7 @@
 This is the dev project that contains the parent solution for running BLGateway Microservices in Docker.
+
+![Gateway drawio](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/9e1f25c2-766e-489c-97a2-9fe0eef83c4d)
+
 Once checked out you can add the Microservices you want to work on by simply checking them out to the src -> Microservices directory found within this solution.
 This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out to the src -> Microservices directory then the whole system should work out of the box.
 A complete solution (as it stand now 6/6/24) currently looks like:
