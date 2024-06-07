@@ -1,6 +1,7 @@
 ﻿using EventBus;
 using EventBus.Abstractions;
 using EventBusRabbitMQ;
+using EventBusServiceBus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -77,23 +78,22 @@ public static class CommonExtensions
 
         if (string.Equals(eventBusSection["ProviderName"], "ServiceBus", StringComparison.OrdinalIgnoreCase))
         {
-            //services.AddSingleton<IServiceBusPersisterConnection>(sp =>
-            //{
-            //    var serviceBusConnectionString = configuration.GetRequiredConnectionString("EventBus");
+            services.AddSingleton<IServiceBusPersisterConnection>(sp =>
+            {
+                var serviceBusConnectionString = configuration.GetRequiredConnectionString("EventBus");
+                return new DefaultServiceBusPersisterConnection(serviceBusConnectionString);
+            });
 
-            //    return new DefaultServiceBusPersisterConnection(serviceBusConnectionString);
-            //});
+            services.AddSingleton<IEventBus, EventBusServiceBus.EventBusServiceBus>(sp =>
+            {
+                var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
+                var logger = sp.GetRequiredService<ILogger<EventBusServiceBus.EventBusServiceBus>>();
+                var eventBusSubscriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+                string subscriptionName = eventBusSection.GetRequiredValue("SubscriptionClientName");
 
-            //services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
-            //{
-            //    var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
-            //    var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
-            //    var eventBusSubscriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-            //    string subscriptionName = eventBusSection.GetRequiredValue("SubscriptionClientName");
-
-            //    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
-            //        eventBusSubscriptionsManager, sp, subscriptionName);
-            //});
+                return new EventBusServiceBus.EventBusServiceBus(serviceBusPersisterConnection, logger,
+                    eventBusSubscriptionsManager, sp, subscriptionName);
+            });
         }
         else
         {
