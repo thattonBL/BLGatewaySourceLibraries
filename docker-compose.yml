@@ -194,8 +194,23 @@ services:
   building33mockapi:
       container_name: building33-mock-api
       image: ${DOCKER_REGISTRY-}building33mockapi
+      environment:
+          - REDIS_HOST=gateway-redis
       build:
           context: .
-          dockerfile: src/Microservices/Building33MockApi/Building33MockApi/Dockerfile        
+          dockerfile: src/Microservices/Building33MockApi/Building33MockApi/Dockerfile
+      depends_on:
+            - redis
       networks:
             - gatewaynetwork
+  redis:
+      container_name: gateway-redis
+      image: redis:latest
+      restart: always
+      ports:
+          - "6379:6379"
+      command: redis-server --save 20 1 --loglevel warning
+      networks:
+          - gatewaynetwork
+      volumes:
+          - ./redis_data:/data
