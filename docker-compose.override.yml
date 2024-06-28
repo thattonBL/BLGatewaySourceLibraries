@@ -26,6 +26,28 @@ services:
   globalintegrationapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+     # - ASPNETCORE_HTTP_PORTS=8090
+     # - ASPNETCORE_HTTPS_PORTS=8091
+    ports:
+      - "5121:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  building33mockapi:
+    # environment:
+    #  - ASPNETCORE_ENVIRONMENT=Development  
+    #   - Kestrel__Endpoints__HTTP__Url=http://0.0.0.0:8090
+    #   - Kestrel__Endpoints__GRPC__Url=http://0.0.0.0:8091
+    #   - Kestrel__Endpoints__GRPC__Protocols=Http2
+    #   - Kestrel__Endpoints__HTTP--Protocols=Http1AndHttp2
+    #   - GRPC_PORT=8091
+    #   - PORT=8090
+    # ports:    
+    #   - "50937:8091"
+      # - "50936:8090"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8090
       - ASPNETCORE_HTTPS_PORTS=8091
     ports:
@@ -34,17 +56,12 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-  building33mockapi:
+  systemadmin:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development  
-      - Kestrel__Endpoints__HTTP__Url=http://0.0.0.0:8090
-      - Kestrel__Endpoints__GRPC__Url=http://0.0.0.0:8091
-      - Kestrel__Endpoints__GRPC__Protocols=Http2
-      - GRPC_PORT=8081
-      - PORT=8080
+        - ASPNETCORE_ENVIRONMENT=Development
+        - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
-      - "50937:8091"
-      - "50936:8090"
+        - "5104:80"
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+        - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+        - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro  

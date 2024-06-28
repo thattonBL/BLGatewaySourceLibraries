@@ -194,8 +194,10 @@ services:
   building33mockapi:
       container_name: building33-mock-api
       image: ${DOCKER_REGISTRY-}building33mockapi
+      ports:
+         - "54278:54278"
       environment:
-          - REDIS_HOST=gateway-redis
+         - REDIS_HOST=gateway-redis
       build:
           context: .
           dockerfile: src/Microservices/Building33MockApi/Building33MockApi/Dockerfile
@@ -214,3 +216,13 @@ services:
           - gatewaynetwork
       volumes:
           - ./redis_data:/data
+  systemadmin:
+      container_name: system-admin
+      image: ${DOCKER_REGISTRY-}systemadmin
+      build:
+          context: .
+          dockerfile: src/Microservices/GlobalIntegrationUI/Dockerfile
+      depends_on:
+            - globalintegrationapi
+      networks:
+            - gatewaynetwork
