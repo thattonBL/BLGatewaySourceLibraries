@@ -224,5 +224,3 @@ services:
           dockerfile: src/Microservices/GlobalIntegrationUI/Dockerfile
       depends_on:
             - globalintegrationapi
-      networks:
-            - gatewaynetwork
