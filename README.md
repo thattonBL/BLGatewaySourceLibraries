@@ -13,7 +13,7 @@ This solution is set up with the docker-compose file to contain all the necessar
 ```
 dotnet nuget add source -n Gateway_Nuget_Feed https://pkgs.dev.azure.com/BritishLibrary-AppDev/Gateway/_packaging/Gateway_Nuget_Feed/nuget/v3/index.json
 ```
-The Microservice projects should then build, if you want to work on the shared libraries simply remove the linkto the packaged code and link to the package project instead.
+The Microservice projects should then build, if you want to work on the shared libraries simply remove the link to the nuget packaged code and link to the library project instead.
 If you make changes to any of the libraries you will have to commit those changes, test the updated nuget package and commit with the updated nuget package reference.
 
-Each Microservice has its own .sln file and docker-compose to allow it to run with it dependencies in isolation.
+Each Microservice has its own .sln file and docker-compose to allow it to run with it dependencies in isolation also if you do not need to run the entire application suite.
