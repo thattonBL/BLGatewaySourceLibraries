@@ -88,9 +88,7 @@ services:
           - gatewaydb
           - gatewayrabbitmq
         environment:
-          - DB_HOST=gateway-db
-          - DB_NAME=Gateway
-          - DB_SA_PASSWORD=password@12345#
+          - SQL_DB_CONNECTION_STRING=Data Source=gateway-db;Database=Gateway;Integrated Security=False;User ID=sa;Password=password@12345#;MultipleActiveResultSets=false;TrustServerCertificate=True;
           - MSG_HOST=gateway-rabbitmq
         networks:
           - gatewaynetwork
@@ -137,7 +135,7 @@ services:
             - gatewaygrpcdb
             - building33mockapi
       environment:
-            - SQL_DB_CONNECTION_STRING='Data Source=gateway-grpc-db;Database=Gateway;Integrated Security=False;User ID=sa;Password=password@12345#;MultipleActiveResultSets=false;TrustServerCertificate=True'
+            - SQL_DB_CONNECTION_STRING=Data Source=gateway-grpc-db;Database=Gateway;Integrated Security=False;User ID=sa;Password=password@12345#;MultipleActiveResultSets=false;TrustServerCertificate=True;
             - MSG_HOST=gateway-rabbitmq
       networks:
             - gatewaynetwork
@@ -183,9 +181,7 @@ services:
          - gatewayrabbitmq
          - globalintegrationdb
       environment:
-         - DB_HOST=global-integration-db
-         - DB_NAME=Global_Integration
-         - DB_SA_PASSWORD=password@12345#
+         - SQL_DB_CONNECTION_STRING=Data Source=global-integration-db;Database=Global_Integration;Integrated Security=False;User ID=sa;Password=password@12345#;MultipleActiveResultSets=false;TrustServerCertificate=True;
          - MSG_HOST=gateway-rabbitmq
       networks:
          - gatewaynetwork
