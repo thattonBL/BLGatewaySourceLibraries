@@ -17,3 +17,5 @@ The Microservice projects should then build, if you want to work on the shared l
 If you make changes to any of the libraries you will have to commit those changes, test the updated nuget package and commit with the updated nuget package reference.
 
 Each Microservice has its own .sln file and docker-compose to allow it to run with it dependencies in isolation also if you do not need to run the entire application suite.
+
+Note: IF you are running the full system and wanting to see messages coming through in the UI please use the https ports.
