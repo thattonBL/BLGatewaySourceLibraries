@@ -4,7 +4,11 @@ This is the dev project that contains the parent solution for running BLGateway 
 
 Once checked out you can add the Microservices you want to work on by simply checking them out to the src -> Microservices directory found within this solution.
 This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out to the src -> Microservices directory then the whole system should work out of the box.
-A complete solution (as it stand now 6/6/24) currently looks like:
+A complete solution (as it stand now 6/6/24) currently looks like: (update 07/01/25) The shared libraries are now nuget packages run the following command, to add the BL package source, before you do a build on the checkout solution:
+
+dotnet nuget add source -n Gateway_Nuget_Feed https://pkgs.dev.azure.com/BritishLibrary-AppDev/Gateway/_packaging/Gateway_Nuget_Feed/nuget/v3/index.json
+
+The Microservice projects should then build, if you want to work on the shared libraries simply remove the packaged code and link to the package project instead.
 
 ![Parent-Project](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/2dcfef25-c896-492e-84b8-b6eb0c74513b)
 
