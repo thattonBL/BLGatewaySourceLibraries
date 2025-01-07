@@ -12,5 +12,4 @@ src/Common/Events.Common/obj
 bin
 elasticsrchdata01
 obj
-src/Microservices
 redis_data/dump.rdb
