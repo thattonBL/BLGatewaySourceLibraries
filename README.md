@@ -2,27 +2,18 @@ This is the dev project that contains the parent solution for running BLGateway 
 
 ![Gateway drawio](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/9e1f25c2-766e-489c-97a2-9fe0eef83c4d)
 
-Once checked out you can add the Microservices you want to work on by simply checking them out to the src -> Microservices directory found within this solution.
-This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out to the src -> Microservices directory then the whole system should work out of the box.
-A complete solution (as it stand now 6/6/24) currently looks like: (update 07/01/25) The shared libraries are now nuget packages run the following command, to add the BL package source, before you do a build on the checkout solution:
+Once checked out you will see something like the following:
+
+![New-Checkout](https://github.com/user-attachments/assets/4475c1c6-9903-4e26-aea3-b2811648e96a)
+
+Then within the folder structure that you have downloaded checkout each project into its associated root folder. You will need to edit the path it checks out too, to ensure that directories aren not duplicated needlessly. For clarity the .git and .sln file should sit directly within the project named directory not within a sub directory of the same name.
+
+This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out then the whole system should work out of the box.
+(update 07/01/25) The shared libraries are now nuget packages run the following command, to add the BL package source, before you do a build on the checkout solution:
 ```
 dotnet nuget add source -n Gateway_Nuget_Feed https://pkgs.dev.azure.com/BritishLibrary-AppDev/Gateway/_packaging/Gateway_Nuget_Feed/nuget/v3/index.json
 ```
-The Microservice projects should then build, if you want to work on the shared libraries simply remove the packaged code and link to the package project instead.
+The Microservice projects should then build, if you want to work on the shared libraries simply remove the link to the nuget packaged code and link to the library project instead.
+If you make changes to any of the libraries you will have to commit those changes, test the updated nuget package and commit with the updated nuget package reference.
 
-![Parent-Project](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/2dcfef25-c896-492e-84b8-b6eb0c74513b)
-
-With the directory structure looking ike this, see to the right:
-
-![Parent-Solution-FileStructure](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/2aef5806-6c78-48ab-b446-f6fe96f80820)
-
-Each microservice still has its own .sln file and can be worked on indidually. They're setup by default to sit within the above structure as the generic library dependencies are pulled in from the parent solution.
-So an individual Microservice looks like this, with the src -> BuildingBlocks and the src -> Common directories just as solution folders not actually directories and pulling in the libraries contained therein from the parent project. 
-It may be the case that changes to a Microservice may nessesitate a change to the parent libraries. This structure is designed to facilitate this. Of course the other option is to use the parent solution and just simply run the indivdual project form the F5 menu in VS.
-See which works best for you:
-
-![Child-Solution-Explorer](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/0b8111b3-9d6a-4eb8-bce5-d4f49b5dd508)
-
-The directory structure looking like this:
-
-![Child-Solution-FileStructure](https://github.com/thattonBL/BLGatewaySourceLibraries/assets/79150422/72cf6a6c-5ddf-4d5f-8e0e-9e53b5672924)
+Each Microservice has its own .sln file and docker-compose to allow it to run with it dependencies in isolation also if you do not need to run the entire application suite.
