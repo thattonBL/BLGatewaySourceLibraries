@@ -6,7 +6,7 @@ Once checked out you will see something like the following:
 
 ![New-Checkout](https://github.com/user-attachments/assets/4475c1c6-9903-4e26-aea3-b2811648e96a)
 
-Then within the folder structure that you have downloaded checkout each project into its associated root folder. You will need to edit the path it checks out to, to emsure that directories aren not duplicated needlessly. For clarity the .git and .sln file should sit directly aithin the project named directory not within a sub directory of the same name.
+Then within the folder structure that you have downloaded checkout each project into its associated root folder. You will need to edit the path it checks out too, to ensure that directories aren not duplicated needlessly. For clarity the .git and .sln file should sit directly within the project named directory not within a sub directory of the same name.
 
 This solution is set up with the docker-compose file to contain all the necessary directories and sql intialisation scripts. So when the complete suite of microservice are checked out then the whole system should work out of the box.
 (update 07/01/25) The shared libraries are now nuget packages run the following command, to add the BL package source, before you do a build on the checkout solution:
